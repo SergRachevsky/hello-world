@@ -4,7 +4,6 @@ pipeline {
         stage('Back-end') {
             agent {
                 docker { 
-                    label 'agent-sergey-csd-01'
                     image 'maven:3-alpine'
                     args '-u root:root'
                 }
@@ -15,6 +14,7 @@ pipeline {
         }
         stage('Front-end') {
             agent {
+                label 'agent-sergey-csd-01'
                 docker { image 'node:14-alpine' }
             }
             steps {
