@@ -4,19 +4,11 @@ pipeline {
         stage('Back-end') {
             agent {
                 docker { 
-                    image 'maven:3-alpine'
+                    image 'ansible:ansible'
                 }
             }
             steps {
-                sh 'mvn --version'
-            }
-        }
-        stage('Front-end') {
-            agent {
-                docker { image 'node:14-alpine' }
-            }
-            steps {
-                sh 'node --version'
+                sh 'ansible-playbook -i inventory/localhost dev-servers.os-versions.yml'
             }
         }
     }
