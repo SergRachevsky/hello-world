@@ -14,7 +14,6 @@ pipeline {
         }
         stage('Front-end') {
             agent {
-                label 'agent-sergey-csd-01'
                 docker { image 'node:14-alpine' }
             }
             steps {
