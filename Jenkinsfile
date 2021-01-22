@@ -1,4 +1,4 @@
-ypipeline {
+pipeline {
     agent { label 'agent-sergey-csd-01' }
     stages {
         stage('Back-end') {
