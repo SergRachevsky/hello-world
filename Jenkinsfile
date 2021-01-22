@@ -1,20 +1,20 @@
-pipeline {
+ypipeline {
     agent { label 'agent-sergey-csd-01' }
-
     stages {
-        stage('Build') {
+        stage('Back-end') {
+            agent {
+                docker { image 'maven:3-alpine' }
+            }
             steps {
-                sh 'uptime' 
+                sh 'mvn --version'
             }
         }
-        stage('Test') {
-            steps {
-                echo 'Testing..'
+        stage('Front-end') {
+            agent {
+                docker { image 'node:14-alpine' }
             }
-        }
-        stage('Deploy') {
             steps {
-                echo 'Deploying....'
+                sh 'node --version'
             }
         }
     }
